@@ -9,6 +9,8 @@ service Auth {
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Login(LoginRequest) returns (LoginResponse);
     rpc IsAdmin(IsAdminRequest) returns (IsAdminResponse);
+    rpc CreateApp(CreateAppRequest)         returns (CreateAppResponse);
+    rpc GetApp(GetAppRequest)         returns (GetAppResponse);
 }
 
 message RegisterRequest {
@@ -38,4 +40,24 @@ message IsAdminRequest {
 
 message IsAdminResponse {
     bool is_admin = 1;
+}
+
+message CreateAppRequest {
+    string name = 1;
+    string secret = 2;
+}
+
+message CreateAppResponse {
+    int64 id = 1;
+}
+
+message GetAppRequest {
+    int64 id = 1;
+}
+
+message GetAppResponse {
+    int64 id = 1;
+    string name = 2;
+    string secret = 3;
+    
 }
